@@ -15,7 +15,7 @@ builder.Services.AddMassTransit(configurator =>
 {
     configurator.UsingAmazonSqs((context, _configurator) =>
     {
-        _configurator.Host(Amazon.RegionEndpoint.APSouth1.OriginalSystemName, hostConfigurator =>
+        _configurator.Host(builder.Configuration["AWS:Region"], hostConfigurator =>
         {
             hostConfigurator.AccessKey(builder.Configuration["AWS:AccessKey"]);
             hostConfigurator.SecretKey(builder.Configuration["AWS:SecretKey"]);
